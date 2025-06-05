@@ -6,7 +6,7 @@ root = tk.Tk()
 root.geometry("300x200")
 root.title("Stopwatch by Eli")
 
-time_elapsed_formatted = tk.StringVar(value="")
+time_elapsed_formatted = tk.StringVar(value="0:0:0")
 
 seconds_elapsed = 0
 paused = True
