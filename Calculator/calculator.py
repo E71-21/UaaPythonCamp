@@ -11,7 +11,7 @@ helv36 = tkFont.Font(family='Helvetica', size = 50, weight="bold")
 anwser = tk.IntVar(value=0)
 
 def calculate(equation):
-    print(equation)
+    # print(str(equation) + "Calculate")
     global anwser
     global current_equation
     global current_equation_str
@@ -66,6 +66,7 @@ def multiply(value1, value2):
 def check_equation():
     global current_equation
     global current_equation_str
+    global anwser
     operation = " "
     if "+" in current_equation_str:
         operation = "+"
@@ -82,18 +83,20 @@ def check_equation():
         current_equation[2] = int(split_equation[1])
     except:
         pass
-    print(current_equation)
-    print(current_equation_str)
+    # print(current_equation)
+    # print(current_equation_str)
     anwser.set(current_equation_str)
 
 def number_button_clicked(value):
     global current_equation_str
+    global anwser
     current_equation_str = current_equation_str + str(value)
     anwser.set(value)
     check_equation()
 
 def operation_button_clicked(value):
     global current_equation_str
+    global anwser
     current_equation_str = current_equation_str + str(value)
     anwser.set(value)
     check_equation()
@@ -101,10 +104,11 @@ def operation_button_clicked(value):
 def clear():
     global current_equation
     global current_equation_str
+    global anwser
     current_equation = ["", " ", ""]
     current_equation_str = ""
-    print(current_equation)
-    print(current_equation_str)
+    # print(current_equation)
+    # print(current_equation_str)
     anwser.set(0)
 
 frame1 = tk.Frame(root)
@@ -144,7 +148,7 @@ add_button = ttk.Button(frame2, text="+", command=lambda value="+": operation_bu
 subtract_button = ttk.Button(frame2, text="-", command=lambda value="-": operation_button_clicked(value))
 multiply_button = ttk.Button(frame2, text="*", command=lambda value="*": operation_button_clicked(value))
 divide_button = ttk.Button(frame2, text="/", command=lambda value="/": operation_button_clicked(value))
-calculate_button = ttk.Button(frame2, text="=", command=lambda equation=current_equation: calculate(equation))
+calculate_button = ttk.Button(frame2, text="=", command=lambda: calculate(current_equation))
 
 clear_buttom = ttk.Button(frame2, text="Clear", command=clear)
 clear_buttom.grid(row=4, column=0, padx=2, pady=2)
