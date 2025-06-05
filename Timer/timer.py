@@ -5,6 +5,7 @@ from time import sleep
 
 root = tk.Tk()
 root.geometry("400x200")
+root.title("Timer by Eli")
 
 time_left = 0
 
