@@ -77,10 +77,10 @@ def check_equation():
     if "/" in current_equation_str:
         operation = "/"
     split_equation = current_equation_str.split(str(operation))
-    current_equation[0] = int(float(split_equation[0])) if current_equation != None else current_equation[0]
+    current_equation[0] = float(split_equation[0]) if current_equation != None else current_equation[0]
     current_equation[1] = operation
     try:
-        current_equation[2] = int(split_equation[1])
+        current_equation[2] = float(split_equation[1])
     except:
         pass
     # print(current_equation)
