@@ -39,7 +39,7 @@ DIFFICULTIES = {
         "num_to_spawn_func": lambda score: 2 + score // 8,
     }
 }
-LEADERBOARD_FILE = "leaderboards.json"
+LEADERBOARD_FILE = "CrossFire/leaderboards.json"
 MAX_LEADERS = 3
 
 # --- Persistent leaderboard logic ---

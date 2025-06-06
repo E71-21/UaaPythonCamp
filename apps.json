@@ -1,0 +1,30 @@
+{
+  "Stopwatch": {
+    "file_path": "Stopwatch/stopwatch.py",
+    "name": "Stopwatch"
+  },
+  "Timer": {
+    "file_path": "Timer/timer.py",
+    "name": "Timer"
+  },
+  "Text Edit": {
+    "file_path": "TextEdit/textedit.py",
+    "name": "Text Edit"
+  },
+  "Calculator": {
+    "file_path": "Calculator/calculator.py",
+    "name": "Calculator"
+  },
+  "Tic-Tac-Toe": {
+    "file_path": "Tic-Tac-Toe/tic_tac_toe.py",
+    "name": "Tic-Tac-Toe"
+  },
+  "CrossFire": {
+    "file_path": "CrossFire/crossfire.py",
+    "name": "Crossfire"
+  },
+  "Sound Board": {
+    "file_path": "C:/Users/uaa_coenglab209login/Documents/VS Code/UaaPythonCamp/Soundboard/Test2.py",
+    "name": "Sound Board"
+  }
+}

@@ -1,49 +1,42 @@
 import tkinter as tk
 from tkinter import ttk
+from tkinter import filedialog
+from tkinter import simpledialog
 import subprocess
-
+import json
 
 root = tk.Tk()
 root.geometry("1600x900")
 root.title("Apps by Eli")
 
-def open_stopwatch():
-    subprocess.run(['python', 'Stopwatch/stopwatch.py'])
+with open("apps.json") as file:
+        apps = json.load(file)
 
-def open_timer():
-    subprocess.run(['python', 'Timer/timer.py'])
+def add_new_app():
+    global apps
+    file_path = filedialog.askopenfile().name
+    name = simpledialog.askstring("Input", "App Name:")
+    apps[name] = {"file_path": file_path, "name": name}
+    with open("apps.json", "w") as file:
+         json.dump(apps, file, indent=2)
+    create_all_buttons()
 
-def open_text_edit():
-    subprocess.run(['python', 'TextEdit/textedit.py'])
+def create_button(name, filepath, row, collum):
+    button = ttk.Button(root, text=name, command=lambda: subprocess.run(['python', filepath]))
+    button.grid(row=row, column=collum, padx=50, pady=50, sticky='NSWE')
 
-def open_calculator():
-    subprocess.run(['python', 'Calculator/calculator.py'])
-
-def open_tic_tac_toe():
-    subprocess.run(['python', 'Tic-Tac-Toe/tic_tac_toe.py'])
-
-def open_crossfire():
-    subprocess.run(['python', 'CrossFire/crossfire.py'])
-
-stopwatch_button = ttk.Button(root, text="Stopwatch", command=open_stopwatch)
-timer_button = ttk.Button(root, text="Timer", command=open_timer)
-text_edit_button = ttk.Button(root, text="Text Edit", command=open_text_edit)
-calculator_button = ttk.Button(root, text="Calculator", command=open_calculator)
-tic_tac_toe_button = ttk.Button(root, text="Tic-Tac-Toe", command=open_tic_tac_toe)
-crossfire_button = ttk.Button(root, text="Cross Fire", command=open_crossfire)
-
-stopwatch_button.pack(padx=500, pady=50, expand=True, fill="both")
-timer_button.pack(padx=500, pady=50, expand=True, fill="both")
-text_edit_button.pack(padx=500, pady=50, expand=True, fill="both")
-calculator_button.pack(padx=500, pady=50, expand=True, fill="both")
-
-tic_tac_toe_button.pack(padx=500, pady=50, expand=True, fill="both")
-crossfire_button.pack(padx=500, pady=50, expand=True, fill="both")
+def create_all_buttons():
+    global apps
+    for index, app in enumerate(apps.values()):
+        root.grid_rowconfigure(index//4, weight=1)
+        root.grid_columnconfigure(index%4, weight=1)
+        create_button(app["name"], app["file_path"], index//4, index%4)
+        if index == len(apps.values()) - 1:
+            root.grid_rowconfigure((index+1)//4, weight=1)
+            root.grid_columnconfigure((index+1)%4, weight=1)
+            button = ttk.Button(root, text="Add New App", command=add_new_app)
+            button.grid(row=(index+1)//4, column=(index+1)%4, padx=50, pady=50, sticky='NSWE')
 
 
-# stopwatch_button.grid(column=0, row=0, padx=20, pady=50)
-# timer_button.grid(column=1, row=0, padx=20, pady=50)
-# text_edit_button.grid(column=2, row=0, padx=20, pady=50)
-# calculator_button.grid(column=3, row=0, padx=20, pady=50)
-
+create_all_buttons()
 root.mainloop()
