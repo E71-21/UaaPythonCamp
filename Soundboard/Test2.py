@@ -15,7 +15,7 @@ pygame.mixer.init()
 
 
 tk = tkinter.Tk() # creates the soundboard window with tkinter
-tk.title("Soundboard")
+tk.title("Soundboard by Griffin, Nick, and Bjorn")
 tk.geometry("960x540")
 
 
