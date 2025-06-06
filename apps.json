@@ -22,9 +22,5 @@
   "CrossFire": {
     "file_path": "CrossFire/crossfire.py",
     "name": "Crossfire"
-  },
-  "Sound Board": {
-    "file_path": "C:/Users/uaa_coenglab209login/Documents/VS Code/UaaPythonCamp/Soundboard/Test2.py",
-    "name": "Sound Board"
   }
 }
